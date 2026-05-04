@@ -46,3 +46,16 @@ cards.forEach(card => {
 const style = document.createElement("style")
 style.textContent = `.visible { opacity: 1 !important; transform: translateY(0) !important; }`
 document.head.appendChild(style)
+
+function switchTab(tab) {
+	document.getElementById("tab-past").classList.toggle("hidden", tab !== "past")
+	document
+		.getElementById("tab-upcoming")
+		.classList.toggle("hidden", tab !== "upcoming")
+	document.querySelectorAll(".events-tab").forEach((btn, i) => {
+		btn.classList.toggle(
+			"active",
+			(i === 0 && tab === "past") || (i === 1 && tab === "upcoming"),
+		)
+	})
+}
